@@ -4,195 +4,281 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>柏発・新潟冬の美食＆産業満喫プラン（1泊2日）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --bg-color: #f9f9f9;
+            /* 新潟の冬・日本海をイメージしたシックな藍色 */
+            --primary-color: #2c4f6b;
+            /* 雪のような少し青みがかった白 */
+            --bg-color: #f4f7f8;
+            /* カニや暖簾をイメージしたアクセントカラー */
+            --accent-color: #c0392b;
+            /* カードの背景 */
             --card-bg: #ffffff;
+            /* テキスト色 */
             --text-color: #333333;
         }
 
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            line-height: 1.6;
+            font-family: "Zen Kaku Gothic New", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
             color: var(--text-color);
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
         }
 
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), #1a3c5a);
             color: white;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         h1 {
             margin: 0;
             font-size: 1.8rem;
+            letter-spacing: 0.05em;
         }
-
-        h2 {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-top: 2rem;
-            color: var(--primary-color);
-        }
-
-        h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
+        
+        .header-sub {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 2rem 1rem;
         }
 
-        .main-visual {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+        /* 日付の見出しデザイン */
+        h2 {
+            position: relative;
+            padding-left: 1rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        /* タイムラインのコンテナ */
+        .timeline-wrapper {
+            position: relative;
+            padding-left: 20px; /* 左側に線のスペースを確保 */
+        }
+
+        /* タイムラインの縦線 */
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 0;
+            left: 6px; /* 線の位置 */
+            width: 2px;
+            background-color: #dce3e8;
         }
 
         .section-card {
             background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 16px; /* 今風の大きめの角丸 */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* ふんわりした影 */
             padding: 1.5rem;
             margin-bottom: 2rem;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-3px); /* ホバー時に少し浮く */
+        }
+
+        /* タイムラインの丸ポチ */
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: -21px; /* カードの外側、線の位置に合わせる */
+            width: 14px;
+            height: 14px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-color); /* 丸の周りに余白を作る */
+            z-index: 1;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .timeline-time {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 0.8rem;
+            border: 1px solid #dce3e8;
+            white-space: nowrap;
         }
 
         .spot-image {
             width: 100%;
             height: auto;
-            border-radius: 6px;
+            border-radius: 10px;
             margin-bottom: 1rem;
-            border: 1px solid #eee;
+            object-fit: cover;
+            /* 画像に少しだけ影をつける */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        .timeline-time {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
+        p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0;
         }
 
-        .meta-info {
-            background-color: #f0f0f0;
-            padding: 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+        .main-visual {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
         }
 
-        .meta-info strong {
+        /* 帰宅メッセージの特別スタイル */
+        .card-special {
+            background-color: #eaf4fc; /* 薄い青背景 */
+            border: 2px dashed #aecce5;
+            text-align: center;
             color: var(--primary-color);
+        }
+        .card-special::before {
+            background-color: var(--primary-color); /* 最後の点は青 */
         }
 
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: var(--primary-color);
-            color: white;
+            background-color: #fff;
+            color: #888;
             font-size: 0.8rem;
+            border-top: 1px solid #eee;
             margin-top: 3rem;
         }
 
         @media (max-width: 600px) {
             h1 { font-size: 1.4rem; }
-            .section-card { padding: 1rem; }
+            .container { padding: 1.5rem 1rem; }
+            .section-card { padding: 1.2rem; }
+            
+            /* スマホではタイムラインの線を少し調整 */
+            .timeline-wrapper { padding-left: 15px; }
+            .timeline-wrapper::before { left: 4px; }
+            .section-card::before { left: -18px; width: 12px; height: 12px; }
+            
+            h3 { flex-direction: column; align-items: flex-start; }
+            .timeline-time { margin-bottom: 0.5rem; display: inline-block;}
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="container">
+    <div class="container" style="padding:0;">
         <h1>柏発・新潟冬の美食＆産業満喫プラン<br>（1泊2日）</h1>
+        <p class="header-sub">2026.01.25(Sat) - 01.26(Sun)</p>
     </div>
 </header>
 
 <div class="container">
-    <p style="text-align: center; margin-bottom: 2rem;">
-        燕三条の「技」と新潟の「食」を楽しみ尽くす、冬の最強ドライブ旅プランです。
+    <p style="text-align: center; margin-bottom: 2.5rem; font-weight: bold;">
+        燕三条の「技」と新潟の「食」を楽しみ尽くす、<br>冬の最強ドライブ旅プランです。
     </p>
 
     <img src="新潟旅行_20260125-26_2.png" alt="全体旅行プラン グラレコ" class="main-visual">
 
     <div id="day1">
-        <h2>【1日目】1月25日（土）：燕三条の「技と食」からスタート</h2>
+        <h2>【1日目】1月25日（土）：燕三条の「技と食」</h2>
 
-        <div class="section-card">
-            <h3><span class="timeline-time">11:00</span>ランチ：廻る 鼓響（こきょう） 燕三条店</h3>
-            <img src="鼓響.png" alt="廻る鼓響 イラスト" class="spot-image">
-            <p>
-                三条燕ICから車で約5分。人気店なので、開店時間（11:00予定）に合わせて行くのがベスト！<br>
-                待ち時間なしで極上の寿司にありつけます。
-            </p>
-        </div>
+        <div class="timeline-wrapper">
+            <div class="section-card">
+                <h3><span class="timeline-time">11:00</span>ランチ：廻る 鼓響（こきょう）</h3>
+                <img src="鼓響.png" alt="廻る鼓響 イラスト" class="spot-image">
+                <p>
+                    三条燕ICから車で約5分。人気店なので、開店時間（11:00予定）に合わせて行くのがベスト！<br>
+                    待ち時間なしで極上の寿司にありつけます。
+                </p>
+            </div>
 
-        <div class="section-card">
-            <h3><span class="timeline-time">12:30</span>金物見学＆買物：燕三条地場産業振興センター（メッセピア）</h3>
-            <img src="メッセピア.png" alt="メッセピア イラスト" class="spot-image">
-            <p>
-                鼓響から車でわずか2分。巨大な無料駐車場完備。<br>
-                燕三条の金物製品（包丁、爪切り、キッチン用品など）が一堂に集結。まるで博物館のように見学でき、気に入ったものはその場で購入可能です。
-            </p>
-        </div>
+            <div class="section-card">
+                <h3><span class="timeline-time">12:30</span>見学：燕三条地場産業振興センター</h3>
+                <img src="メッセピア.png" alt="メッセピア イラスト" class="spot-image">
+                <p>
+                    鼓響から車でわずか2分。巨大な無料駐車場完備。<br>
+                    燕三条の金物製品（包丁、爪切り、キッチン用品など）が一堂に集結。まるで博物館のように見学でき、気に入ったものはその場で購入可能です。
+                </p>
+            </div>
 
-        <div class="section-card">
-            <h3><span class="timeline-time">17:30</span>ちょい寄り：ぽんしゅ館 新潟驛店</h3>
-            <img src="ぽんしゅ館.png" alt="ぽんしゅ館 イラスト" class="spot-image">
-            <p>
-                ホテルチェックイン後、徒歩で新潟駅へ。<br>
-                夕食前に、名物「唎き酒（500円でコイン5枚）」で軽く景気づけ。日本酒が飲めない方も、発酵食品コーナーや塩の試食などを楽しめます。
-            </p>
-        </div>
+            <div class="section-card">
+                <h3><span class="timeline-time">17:30</span>ちょい寄り：ぽんしゅ館 新潟驛店</h3>
+                <img src="ぽんしゅ館.png" alt="ぽんしゅ館 イラスト" class="spot-image">
+                <p>
+                    ホテルチェックイン後、徒歩で新潟駅へ。<br>
+                    夕食前に、名物「唎き酒（500円でコイン5枚）」で軽く景気づけ。日本酒が飲めない方も、発酵食品コーナーや塩の試食などを楽しめます。
+                </p>
+            </div>
 
-        <div class="section-card">
-            <h3><span class="timeline-time">18:30</span>ディナー：カニカニランド</h3>
-            <img src="カニカニランド.png" alt="カニカニランド イラスト" class="spot-image">
-            <p>
-                ぽんしゅ館から徒歩で移動し、カニの宴スタート！<br>
-                カニ好きにはたまらない贅沢な時間を過ごします。
-            </p>
+            <div class="section-card">
+                <h3><span class="timeline-time">18:30</span>ディナー：カニカニランド</h3>
+                <img src="カニカニランド.png" alt="カニカニランド イラスト" class="spot-image">
+                <p>
+                    ぽんしゅ館から徒歩で移動し、カニの宴スタート！<br>
+                    カニ好きにはたまらない贅沢な時間を過ごします。
+                </p>
+            </div>
         </div>
     </div>
 
     <div id="day2">
-        <h2>【2日目】1月26日（日）：駅前グルメと名物ランチ</h2>
+        <h2>【2日目】1月26日（日）：駅前グルメと名物</h2>
 
-        <div class="section-card">
-            <h3><span class="timeline-time">09:00</span>朝食：にぎり米（新潟駅前本店）</h3>
-            <img src="にぎり米.png" alt="にぎり米 イラスト" class="spot-image">
-            <p>
-                ホテルから徒歩で向かいます。<br>
-                握りたての温かいおにぎりで目を覚ましましょう。新潟産コシヒカリの美味しさをダイレクトに味わえます。
-            </p>
+        <div class="timeline-wrapper">
+            <div class="section-card">
+                <h3><span class="timeline-time">09:00</span>朝食：にぎり米（新潟駅前本店）</h3>
+                <img src="にぎり米.png" alt="にぎり米 イラスト" class="spot-image">
+                <p>
+                    ホテルから徒歩で向かいます。<br>
+                    握りたての温かいおにぎりで目を覚ましましょう。新潟産コシヒカリの美味しさをダイレクトに味わえます。
+                </p>
+            </div>
+
+            <div class="section-card">
+                <h3><span class="timeline-time">12:30</span>ランチ：小嶋屋総本店 県央店</h3>
+                <img src="小嶋屋総本店.png" alt="小嶋屋総本店 イラスト" class="spot-image">
+                <p>
+                    旅の締めくくりは、再び燕三条エリアへ。<br>
+                    3人全員で同じテーブルを囲み、2人は「へぎそば」、1人は「タレかつ丼（アレルギー対応）」を注文して、それぞれの新潟グルメを楽しみます。
+                </p>
+            </div>
+
+            <div class="section-card card-special">
+                <h3 style="justify-content: center; margin-bottom:0.5rem;"><span class="timeline-time" style="background:none; border:none; font-size:1.1rem;">14:00</span>三条燕IC 出発</h3>
+                <p>明るいうちに雪の山間部を抜けて、安全運転で柏へ帰りましょう！</p>
+            </div>
         </div>
-
-        <div class="section-card">
-            <h3><span class="timeline-time">12:30</span>ランチ：小嶋屋総本店 県央店</h3>
-            <img src="小嶋屋総本店.png" alt="小嶋屋総本店 イラスト" class="spot-image">
-            <p>
-                旅の締めくくりは、再び燕三条エリアへ。<br>
-                3人全員で同じテーブルを囲み、2人は「へぎそば」、1人は「タレかつ丼（アレルギー対応）」を注文して、それぞれの新潟グルメを楽しみます。
-            </p>
-        </div>
-    </div>
-
-    <div class="section-card" style="text-align: center; background-color: #e3f2fd;">
-        <p><strong>14:00 三条燕IC 出発</strong><br>
-        明るいうちに雪の山間部を抜けて、安全運転で柏へ帰りましょう！</p>
     </div>
 
 </div>
@@ -203,5 +289,3 @@
 
 </body>
 </html>
-
-
