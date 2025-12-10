@@ -10,15 +10,10 @@
     
     <style>
         :root {
-            /* 新潟の冬・日本海をイメージしたシックな藍色 */
             --primary-color: #2c4f6b;
-            /* 雪のような少し青みがかった白 */
             --bg-color: #f4f7f8;
-            /* カニや暖簾をイメージしたアクセントカラー */
             --accent-color: #c0392b;
-            /* カードの背景 */
             --card-bg: #ffffff;
-            /* テキスト色 */
             --text-color: #333333;
         }
 
@@ -29,13 +24,13 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased; /* 文字を滑らかに */
+            -webkit-font-smoothing: antialiased;
         }
 
         header {
             background: linear-gradient(135deg, var(--primary-color), #1a3c5a);
             color: white;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -44,12 +39,41 @@
             margin: 0;
             font-size: 1.8rem;
             letter-spacing: 0.05em;
+            line-height: 1.4;
+            /* 光るアニメーション設定 */
+            background: linear-gradient(
+                to right,
+                #ffffff 20%,
+                #fffacd 40%, 
+                #ffffff 60%,
+                #ffffff 80%
+            );
+            background-size: 200% auto;
+            color: #fff;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            font-weight: 700;
+        }
+
+        /* 光るアニメーションのキーフレーム */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
         }
         
         .header-sub {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1.5rem;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .container {
@@ -58,7 +82,6 @@
             padding: 2rem 1rem;
         }
 
-        /* 日付の見出しデザイン */
         h2 {
             position: relative;
             padding-left: 1rem;
@@ -69,27 +92,25 @@
             border-left: 5px solid var(--accent-color);
         }
 
-        /* タイムラインのコンテナ */
         .timeline-wrapper {
             position: relative;
-            padding-left: 20px; /* 左側に線のスペースを確保 */
+            padding-left: 20px;
         }
 
-        /* タイムラインの縦線 */
         .timeline-wrapper::before {
             content: '';
             position: absolute;
             top: 10px;
             bottom: 0;
-            left: 6px; /* 線の位置 */
+            left: 6px;
             width: 2px;
             background-color: #dce3e8;
         }
 
         .section-card {
             background-color: var(--card-bg);
-            border-radius: 16px; /* 今風の大きめの角丸 */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* ふんわりした影 */
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             padding: 1.5rem;
             margin-bottom: 2rem;
             position: relative;
@@ -97,20 +118,19 @@
         }
         
         .section-card:hover {
-            transform: translateY(-3px); /* ホバー時に少し浮く */
+            transform: translateY(-3px);
         }
 
-        /* タイムラインの丸ポチ */
         .section-card::before {
             content: '';
             position: absolute;
             top: 24px;
-            left: -21px; /* カードの外側、線の位置に合わせる */
+            left: -21px;
             width: 14px;
             height: 14px;
             background-color: var(--accent-color);
             border-radius: 50%;
-            border: 3px solid var(--bg-color); /* 丸の周りに余白を作る */
+            border: 3px solid var(--bg-color);
             z-index: 1;
         }
 
@@ -141,7 +161,6 @@
             border-radius: 10px;
             margin-bottom: 1rem;
             object-fit: cover;
-            /* 画像に少しだけ影をつける */
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
@@ -158,15 +177,14 @@
             margin-bottom: 2rem;
         }
 
-        /* 帰宅メッセージの特別スタイル */
         .card-special {
-            background-color: #eaf4fc; /* 薄い青背景 */
+            background-color: #eaf4fc;
             border: 2px dashed #aecce5;
             text-align: center;
             color: var(--primary-color);
         }
         .card-special::before {
-            background-color: var(--primary-color); /* 最後の点は青 */
+            background-color: var(--primary-color);
         }
 
         footer {
@@ -183,12 +201,9 @@
             h1 { font-size: 1.4rem; }
             .container { padding: 1.5rem 1rem; }
             .section-card { padding: 1.2rem; }
-            
-            /* スマホではタイムラインの線を少し調整 */
             .timeline-wrapper { padding-left: 15px; }
             .timeline-wrapper::before { left: 4px; }
             .section-card::before { left: -18px; width: 12px; height: 12px; }
-            
             h3 { flex-direction: column; align-items: flex-start; }
             .timeline-time { margin-bottom: 0.5rem; display: inline-block;}
         }
@@ -199,7 +214,10 @@
 <header>
     <div class="container" style="padding:0;">
         <h1>柏発・新潟冬の美食＆産業満喫プラン<br>（1泊2日）</h1>
-        <p class="header-sub">2026.01.25(Sat) - 01.26(Sun)</p>
+        
+        <div class="header-sub">
+            2026.01.25(Sun) - 01.26(Mon)
+        </div>
     </div>
 </header>
 
@@ -211,7 +229,7 @@
     <img src="新潟旅行_20260125-26_2.png" alt="全体旅行プラン グラレコ" class="main-visual">
 
     <div id="day1">
-        <h2>【1日目】1月25日（土）：燕三条の「技と食」</h2>
+        <h2>【1日目】1月25日（日）：燕三条の「技と食」</h2>
 
         <div class="timeline-wrapper">
             <div class="section-card">
@@ -253,7 +271,7 @@
     </div>
 
     <div id="day2">
-        <h2>【2日目】1月26日（日）：駅前グルメと名物</h2>
+        <h2>【2日目】1月26日（月）：駅前グルメと名物</h2>
 
         <div class="timeline-wrapper">
             <div class="section-card">
